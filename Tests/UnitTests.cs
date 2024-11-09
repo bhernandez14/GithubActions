@@ -98,5 +98,35 @@ namespace GithubActionsLab
             Assert.Throws<ArgumentNullException>(() => Program.Power("1", null));
             Assert.Throws<ArgumentNullException>(() => Program.Power(null, null));
         }
+        [Test]
+        public void Divide_Valid_Hernandez()
+        {
+            Assert.AreEqual(2, Program.Divide("4", "2"));
+            Assert.AreEqual(1, Program.Divide("5", "5"));
+            Assert.AreEqual(0, Program.Divide("0", "5"));
+        }
+
+        [Test]
+        public void Divide_Invalid_Hernandez()
+        {
+            Assert.Throws<FormatException>(() => Program.Divide("a", "1"));
+            Assert.Throws<FormatException>(() => Program.Divide("3", "b"));
+            Assert.Throws<FormatException>(() => Program.Divide("a", "b"));
+        }
+
+        [Test]
+        public void Divide_Null_Hernandez()
+        {
+            Assert.Throws<ArgumentNullException>(() => Program.Divide(null, "1"));
+            Assert.Throws<ArgumentNullException>(() => Program.Divide("1", null));
+            Assert.Throws<ArgumentNullException>(() => Program.Divide(null, null));
+        }
+
+        [Test]
+        public void Divide_ByZero_Hernandez()
+        {
+            Assert.Throws<DivideByZeroException>(() => Program.Divide("5", "0"));
+            Assert.Throws<DivideByZeroException>(() => Program.Divide("0", "0"));
+        }
     }
 }
